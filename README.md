@@ -1,5 +1,5 @@
 
-Code Battle!
+# Code Battle!
 
 This is the backend for code battle website, this backend handles everything from creating channels to checking the code and determining the winner.
 All the API's are created with crash protection.

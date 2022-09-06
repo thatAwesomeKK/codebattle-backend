@@ -21,10 +21,11 @@ router.post('/start', async (req, res) => {
             const token = await hop.channels.tokens.create(state) //creating token for private channel
             await hop.channels.subscribeToken(channel.id, token.id); //assiging token to the channel
 
+            //Choose a Random Question
             const random = Math.floor(Math.random() * Questions.length);
             const randomQuestion = Questions[random]
 
-            await createForMatch(channel.id, token.id, player ,randomQuestion) //creating matchRequchannel.idest
+            await createForMatch(channel.id, token.id, player ,randomQuestion) //creating matchReq&channel
             return res.status(200).send({ channelID: channel.id, channelToken: token.id, question: randomQuestion })
         } else {
             const { channelToken, channelID, question } = await createMatch(player) //creating match if available
