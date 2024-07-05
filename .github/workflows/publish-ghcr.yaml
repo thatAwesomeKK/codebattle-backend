@@ -1,0 +1,20 @@
+name: DOCKER Image CI for GHCR
+
+on:
+  push:
+    branches:
+      - v1.0
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build and push the image
+          run: |
+            docker login --username thatAwesomeKK --password ${{ secrets.GH_PAT }} ghcr.io
+            docker build . -t ghcr.io/thatawesomekk/codebattle-backend:latest
+            docker push ghcr.io/thatawesomekk/codebattle-backend:latest
