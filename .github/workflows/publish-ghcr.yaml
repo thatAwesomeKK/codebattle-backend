@@ -21,4 +21,5 @@ jobs:
 
       - name: Build and push the image
         run: |
+          docker buildx create --use
           docker buildx build --platform linux/arm64 -t ghcr.io/thatawesomekk/codebattle-backend:latest --push .
