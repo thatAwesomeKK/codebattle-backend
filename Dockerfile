@@ -4,12 +4,14 @@ FROM --platform=linux/arm64 node:20-alpine AS base
 # Create and change to the app directory
 WORKDIR /usr/src/app
 
+RUN apk add --no-cache bash
+RUN npm install -g pnpm && pnpm --version
+
 # Copy application dependency manifests to the container image
 COPY package.json ./
 COPY pnpm-lock.yaml ./
 
 # Install dependencies
-RUN npm install -g pnpm
 RUN pnpm i
 
 # Copy application code
