@@ -1,5 +1,5 @@
 # Use the official Node.js base image
-FROM --platform=linux/arm64 node:20-alpine AS base
+FROM node:20-alpine AS base
 
 # Create and change to the app directory
 WORKDIR /usr/src/app
